@@ -11,7 +11,10 @@ body {
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
-
+/* .tamaño{
+  width: 500%;
+    max-height: 100px; */
+}
 /* Carousel base class */
 .carousel {
   margin-bottom: 4rem;

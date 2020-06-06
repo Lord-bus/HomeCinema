@@ -25,7 +25,7 @@
               @foreach($peliculas as $pelicula)
               <tr id="user_id_{{ $pelicula->id }}">
                  <td>{{ $pelicula->id  }}</td>
-                 <td><a href="#"><img src="/photos/cine.png" style="width:100px;height:80px; border-radius:5px;"></a></td>
+                 <td><a href="#"><img src="/storage/{{$pelicula->avatar}}" style="width:100px;height:80px; border-radius:5px;"></a></td>
                  <td>{{ $pelicula->title }}</td>
                  <td>{{ $pelicula->release_date }}</td>
                  <td>{{ $pelicula->rating }}</td>
@@ -34,8 +34,8 @@
                  <td></td>
                  <td>
                  <a href="/detallePelicula/{{$pelicula->id}}"  class="btn btn-warning" value="Edit">Ver</a>
-                 <a href="/editarPelicula{{ $pelicula->id }}" class="btn btn-info" value="Edit">Editar</a>
-                  <a href="/borrarPelicula{{ $pelicula->id }}" class="btn btn-danger delete-user" value="Delete">Borrar</a></td>
+                 <a href="/editarPelicula/{{ $pelicula->id }}" class="btn btn-info" value="Edit">Editar</a>
+                  <a href="/borrarPelicula/{{ $pelicula->id }}" class="btn btn-danger delete-user" value="Delete">Borrar</a></td>
               </tr>
               @endforeach
            </tbody>

@@ -1,58 +1,47 @@
 @extends('layouts.app')
-
 @section('content')
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card flex-md-row mb-4 box-shadow h-md-250">
-        <div class="card-body d-flex flex-column">
-          <h2 ><b>Peliculas Random </b></h2>
-          <br>
-          @foreach ($peliculas as $pelicula)
-            <ul>
-              <h5><img src="/img/cine.png" alt="" height="40px"> {{$pelicula->title}}</h5>
-              <form method="post" action="/detallePelicula/{{ $pelicula->id }}" enctype="multipart/form-data">
-                 @csrf
-                 @method('GET')
-               <div class="form-group">
-                 <input type="hidden" name="id" value="{{ $pelicula->id }}">
-                 <input type="submit" name="" value="Ver">
-                </div>
-              </form>
-            </ul>
-            <hr>
-          @endforeach
 
+<div class="container-fluid" bg-color="dark">
+  <div class="row justify-content-md-center">
+  <h1>Ultimas !!</h1>
+  </div>
+  <div class="row justify-content-md-center">
+    @foreach ($peliculas2 as $pelicula)
+      <div class="col-md-2 col-sm-6">
+        <div class="card">
+          <img src="/storage/{{$pelicula->avatar}}"  class="card-img-top" alt="Card image">
+        
+          <div class="card-body">
+            <p class="card-text"><b>{{$pelicula->title}}</b></p>
+            <div class="">
+              <a href="/detallePelicula/{{$pelicula->id}}" class="btn btn-info btn-left btn-sm">Ver Detalles</a>
+              {{-- <a href="/detallePeliculas/{{$pelicula->id}}" class="btn btn-success btn-right btn-sm">Trailer</a> --}}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card flex-md-row box-shadow h-md-250">
-        <div class="card-body d-flex flex-column align-items-start">
-          <h2 ><b> Ultimas Peliculas !! </b></h2>
-          <br>
-          @foreach ($peliculas2 as $pelicula)
-            <ul>
-              <h5><img src="/img/cine.png" alt="" height="40px"> {{$pelicula->title}}</h5>
-              <form method="post" action="/detallePelicula/{{ $pelicula->id }}" enctype="multipart/form-data">
-                 @csrf
-                 @method('GET')
-               <div class="form-group">
-                 <input type="hidden" name="id" value="{{ $pelicula->id }}">
-                 <input type="submit" name="" value="Ver">
-                </div>
-              </form>
-            </ul>
-            <hr>
-          @endforeach
-          {{$peliculas2->links()}}
+    @endforeach
+  </div>
+  <br>
+  <div class="row justify-content-md-center">
+  <h1>Random !!</h1>
+  </div>
+  <div class="row justify-content-md-center">
+    @foreach ($peliculas as $pelicula)
+      <div class="col-md-2 col-sm-6">
+        <div class="card">
+          <img src="/storage/{{$pelicula->avatar}}" class="card-img-top" alt="Card image">
+          <div class="card-body">
+            <p class="card-text">Premios: {{$pelicula->title}}</p>
+            <div class="">
+              <a href="/detallePeliculas/{{$pelicula->id}}" class="btn btn-info btn-left btn-sm">Detalle</a>
+              {{-- <a href="/detallePeliculas/{{$pelicula->id}}" class="btn btn-success btn-right btn-sm">Trailer</a> --}}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    @endforeach
   </div>
-  </div>
-  <!-- Bootstrap core JavaScript
-  ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+</div>
 
 @endsection

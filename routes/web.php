@@ -1,22 +1,21 @@
 <?php
 
-Auth::routes();
 //********************************* HOME *****************************
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function ()
+{
+return view('welcome');
 });
-Route::get('/home','HomeController@index')->name('home');
-
-//************************* Sobre Peliculas**********************************
-Route::get('/listadoPeliculas', 'PeliculasController@index');
-Route::get('/index','PeliculasController@index2');
-Route::get('/detallePelicula/{id}','PeliculasController@show')->name('detallePelicula');
-
-
+Auth::routes();
+Route::get('/home','HomeController@index');
 Route::get('/admin', 'homeController@admin');
-
-Route::post('/agregarPelicula', 'PeliculasController@update');
-Route::get('/borrarPelicula', 'PeliculasController@destroy');
-Route::get('/editarPelicula', 'PeliculasController@edit');
-
+//************************* Acceso a Usuarios **********************************
+Route::get('/listadoPeliculas', 'PeliculasController@index');
+Route::get('/detallePelicula/{id}','PeliculasController@show');
+Route::get('/buscar', 'peliculasController@buscar');
+//************************* Acceso a Administrador **********************************
+Route::get('/agregarPelicula', 'PeliculasController@create')->middleware('permiso');
+Route::post('/agregarPelicula', 'PeliculasController@store')->middleware('permiso');
+Route::get('/editarPelicula/{id}', 'peliculasController@edit')->middleware('permiso');
+Route::put('/actualizarPelicula/{id}','PeliculasController@update')->middleware('permiso');
+Route::get('/borrarPelicula/{id}', 'PeliculasController@destroy')->middleware('permiso');
 //***************************************************************

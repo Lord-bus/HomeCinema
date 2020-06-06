@@ -22,10 +22,11 @@ $(document).ready(function(){
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="js/boostrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/3b98d2cca3.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/3b98d2cca3.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -51,12 +52,9 @@ $(document).ready(function(){
                           <a class="nav-link" href="/home"><h5>Recomendadas</h5></a>
                         </li>
                         <li class="nav-item active">
-                          <a class="nav-link" href="/listadoPeliculas"><h5>Peliculas</h5></a>
+                          <a class="nav-link" href="/listadoPeliculas"><h5>Listado Peliculas</h5></a>
                         </li>
 
-                        <li class="nav-item active">
-                          <a class="nav-link" href="#"><h5>Generos</h5></a>
-                        </li>
                       </ul>
                     @endif
 
@@ -89,38 +87,29 @@ $(document).ready(function(){
                               </div>
                           </li>
                           <li>
-                             <a href="{{url('/user')}}">
-                             <img
-                                src="/img/emoji.png"
-                                alt=""
-                                class="img-responsive img-fluid img-thumbnail rounded mx-auto d-block"
-                                style="height:40px;width:40px;margin-left:15px;"
-                                >
-                             </a>
+                             <img src="/img/emoji.png" alt="" class="img-responsive img-fluid img-thumbnail rounded mx-auto d-block" style="height:40px;width:40px;margin-left:15px;">
                           </li>
                            {{-- && (Auth::user()->role == "1")) --}}
                           @if (Auth::user()!= null && (Auth::user()->role == "1"))
                           <li style="margin:8px;"><a href="{{url('/admin')}}"><i class="fas fa-tools" style="color:gray;"> Admin</i></a></li>
                           @endif
                         @endguest
-
                     </ul>
                 </div>
             </div>
         </nav>
-
+<!-- ************************** SECCIONES **********************************-->
         <main class="py-4">
           <section class="container mt-3 pt-2">
               @yield('content')
           </section>
-        </main>
-        <hr>
+        </main> {{-- <hr> --}}
         <br>
-        <!-- FOOTER -->
-        <footer class="container-fluid pt-2 bg-info">
+<!-- ************************** FOOTER **********************************-->
+        <footer class="container-fluid pt-2 bg-dark text-white">
           <div class="container-fluid ">
             <div class="row">
-                <div class="text-center col-sm-4 col-md-4">
+                <div class="text-center col-sm-4 col-md-3">
                   <div>
                     <ul class="list-unstyled"><hr>
                     <strong>Información de la Página</strong>
@@ -134,18 +123,29 @@ $(document).ready(function(){
                     </ul>
                   </div>
                 </div>
-                <div class=" col-sm-4 col-md-4">
+                <div class="text-center col-sm-6 col-md-3">
                   <div>
                     <ul class="list-unstyled"><hr>
                       <strong>Siguenos en las Redes Sociales</strong><br>
-                      <li><i class="fab fa-facebook-square"></i><a href="http://www.facebook.com" class="text-dark"> Facebook</a></li>
-                      <li><i class="fab fa-twitter-square"></i><a href="http://www.twitter.com" class="text-dark"> Twitter </a></li>
-                      <li><i class="fab fa-instagram-square"></i><a href="http://www.instegram.com" class="text-dark"> Instegram</a></li>
-                      <li><i class="fab fa-youtube"></i><a href="http://www.youtube.com" class="text-dark"> YouTube  </a></li>
+                      <li><i class="fab fa-facebook-square"></i><a href="http://www.facebook.com" class="text-white"> Facebook</a></li>
+                      <li><i class="fab fa-twitter-square"></i><a href="http://www.twitter.com" class="text-white"> Twitter </a></li>
+                      <li><i class="fab fa-instagram-square"></i><a href="http://www.instegram.com" class="text-white"> Instegram</a></li>
+                      <li><i class="fab fa-youtube"></i><a href="http://www.youtube.com" class="text-white"> YouTube  </a></li>
                     </ul>
                   </div>
                 </div>
-                <div class="text-center col-sm-4 col-md-4"><hr>
+                <div class="text-center col-sm-6 col-md-3">
+                  <div>
+                    <ul class="list-unstyled"><hr>
+                      <strong>Preguntas Frecuentes</strong><br>
+                      <li><a href="" class="text-white">Registración</a></li>
+                      <li><a href="" class="text-white">Alquilar Peliculas </a></li>
+                      <li><a href="" class="text-white">Descargar Peliculas</a></li>
+                      <li><a href="" class="text-white">Medios de Pagos</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="text-center col-sm-6 col-md-3"><hr>
                 <img src="\img\cine.pnG" alt="" height="40px" class=""><br>
                 <strong>HOME CINEMA</strong>
                 By Raul Bustamante<br>
@@ -160,12 +160,6 @@ $(document).ready(function(){
           <p>&copy; 2020-2021 Home Cinema, Cia. &middot; <a href="#" class="text-white">Privacy</a> &middot; <a href="#" class="text-white">Terms</a></p><br>
           </div>
         </footer>
-      </main>
-      <!-- Bootstrap core JavaScript
-      ================================================== -->
-      <!-- Placed at the end of the document so the pages load faster -->
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="js/boostrap.min.js"></script>
     </div>
 </body>
 </html>

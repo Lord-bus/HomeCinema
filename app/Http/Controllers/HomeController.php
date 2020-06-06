@@ -14,12 +14,12 @@ class HomeController extends Controller
     public function index()
     {
         $peliculas=Pelicula::all()->random(5);
-        $peliculas2=Pelicula::paginate(5);
+        $peliculas2=Pelicula::all()->sortByDesc('created_at')->take(5);
         return view('home',compact('peliculas','peliculas2'));
     }
     public function admin()
     {
-        $peliculas=Pelicula::paginate(5);
+        $peliculas=Pelicula::orderBy('id','desc')->paginate(3);
         return view('administrador',compact('peliculas'));
     }
 }

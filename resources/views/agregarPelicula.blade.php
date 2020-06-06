@@ -29,29 +29,13 @@
                        <label for="#">Duración</label>
                        <input type="number" name="length" class="form-control" id="#" placeholder="Entero">
                        </div>
+                       <div class="form-group">
+                       <label for="#">Poster</label>
+                       <input type="file" name="avatar" class="form-control" id="#" placeholder="">
+                       </div>
                        <div class="">
                          <input type="submit" name="" value="AgregarPelicula">
                        </div>
-                       {{-- <div class="form-group">
-                       <label for="#">Genero:</label><br>
-                       <input type="radio" id="male" name="gender" value="male">
-                       <label for="male">Comedia</label>
-                       <input type="radio" id="female" name="gender" value="female">
-                       <label for="female">Suspenso</label>
-                       <input type="radio" id="other" name="gender" value="other">
-                       <label for="other">Drama</label>
-                       <input type="radio" id="other" name="gender" value="other">
-                       <label for="other">Ciencia Ficción</label>
-                       <input type="radio" id="other" name="gender" value="other">
-                       <label for="other">Anime</label>
-                       </div>
-               </div>
-              <div class="col-md-6">
-                <div class="container-fluid">
-                  <div class="card shadow" >
-                     <img class="img-fluid img-thumbnail rounded mx-auto d-block" src="/img/cine.png" style=" height:200px ;width: 200px;" id="imagen">
-                     <input type="file" name="imagen" value="imagen"> --}}
-
              </form>
             </section>
               </div>

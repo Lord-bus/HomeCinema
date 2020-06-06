@@ -1,70 +1,93 @@
 @extends('layouts.app')
 @section('content')
-   <div class="container">
-              <div class="row">
-                <div class="col-md-12 mt-2 mb-2">
-                  <h3 class="text-center"><b> Agregar Pelicula </b></h3>
-                </div>
-                <div class="col-md-6">
-                 <section class="container-fluid perfil">
-                    <form method="POST" action="" enctype="multipart/form-data">
-                       @csrf
-                       @method('GET')
-                     <div class="form-group">
-                      <label for="exampleInputEmail1">Titulo</label>
-                      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Texto">
+<div class="row justify-content-center">
+   <div class="col-md-12">
+      <div class="card">
+         <div class="card-body">
+            <section class="container-fluid perfil">
+                <form method="POST" action="/actualizarPelicula/{{$peliculas->id}}" enctype="multipart/form-data">
+                  {{csrf_field()}}
+                  @method('PUT')
+               <div class="row">
+                  <div class="col-md-6">
+                    <div class="card">
+                      <div class="card-body mb-2">
+                        <h1 class="card-text text-center"><b>{{$peliculas->title}}</b></1>
                       </div>
-                      <div class="form-group">
-                      <label for="exampleInputEmail1">Raiting</label>
-                      <input type="float" class="form-control" id="exampleInputEmail1" placeholder="decimal">
+                      <div class="text-center mb-5" >
+                        <img src="/storage/{{$peliculas->avatar}}" clas="card-img-top" alt="Card image" width="250">
+
                       </div>
-                      <div class="form-group">
-                       <label for="exampleInputEmail1">Premios</label>
-                       <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Entero">
-                       </div>
-                       <div class="form-group">
-                       <label for="exampleInputEmail1">Fecha de Estreno</label>
-                       <input type="date" class="form-control" id="exampleInputEmail1" placeholder="fecha">
-                       </div>
-                       <div class="form-group">
-                       <label for="exampleInputEmail1">Duración</label>
-                       <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Entero">
-                       </div>
-                       <div class="form-group">
-                       <label for="exampleInputEmail1">Genero:</label><br>
-                       <input type="radio" id="male" name="gender" value="male">
-                       <label for="male">Comedia</label>
-                       <input type="radio" id="female" name="gender" value="female">
-                       <label for="female">Suspenso</label>
-                       <input type="radio" id="other" name="gender" value="other">
-                       <label for="other">Drama</label>
-                       <input type="radio" id="other" name="gender" value="other">
-                       <label for="other">Ciencia Ficción</label>
-                       <input type="radio" id="other" name="gender" value="other">
-                       <label for="other">Anime</label>
-                       </div>
 
-              </div>
-              <div class="col-md-6">
-                <div class="container-fluid">
-                  <div class="card shadow" >
-                     <img class="img-fluid img-thumbnail rounded mx-auto d-block" src="/img/cine.png" style=" height:200px ;width: 200px;" id="imagen">
-                     <input type="file" name="imagen" value="imagen">
+                    </div>
+                    <input type="file" name="avatar" id="avatar" value="{{ $peliculas->avatar }}" class="form-control" style="border: none;">
                   </div>
-                  Interests:<br>
-
+                  <div class="col-md-6">
+                     <div class="card shadow" style="border:0px;">
+                        <div class="card-header bg-white border-0" >
+                           <div class="row align-items-center">
+                              <div class="col-8">
+                                 <h3 class="mb-0 ">Detalle de Pelicula</h3>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card-body" >
+                           <h6 class="heading-small text-muted mb-4">Datos personales</h6>
+                           <div class="pl-lg-4">
+                              <div class="row">
+                                 <div class="col-lg-6">
+                                    <strong>Titulo: </strong><br>
+                                    <input type="text" name="title"  id="title" value="{{ $peliculas->title }}">
+                                 </div>
+                                 <div class="col-lg-6">
+                                    <strong>Raiting: </strong><br>
+                                    <input type="text" name="rating" id="rating" value="{{ $peliculas->rating }}">
+                                 </div>
+                              </div><br>
+                              <div class="row">
+                                 <div class="col-lg-6">
+                                    <strong>Premios: </strong><br>
+                                    <input type="text" name="awards" id="awards" value="{{ $peliculas->awards }}">
+                                 </div>
+                                 <div class="col-lg-6">
+                                    <strong>Fecha de Estreno: </strong><br>
+                                    <input type="text" name="release_date" id="release_date" value="{{ $peliculas->release_date }}">
+                                 </div>
+                              </div><br>
+                              <div class="row">
+                                 <div class="col-md-6">
+                                    <strong>Duración: </strong><br>
+                                    <input type="text" name="length" id="length" value="{{ $peliculas->length }}">
+                                 </div>
+                                 <div class="col-md-6">
+                                    <strong>Genero: </strong>
+                                    <select class="custom-select" name="genre_id" required>
+                                      <option value="">Elige el Genero</option>
+                                      @foreach ($generos as $genero)
+                                        <option value="{{ $genero->id }}"
+                                          {{ (isset($peliculas) && ($peliculas->genre_id == $genero->id))?'seleted':'' }}
+                                        >{{ $genero->name }}</option>
+                                      @endforeach
+                                    </select>
+                                 </div>
+                              </div><br>
+                           </div>
+                        </div>
+                     </div>
+                     <hr class="my-4">
                   </div>
-                <div>
+               </div>
+               <div>
                  <div class="form-group">
-                    <button type="submit" class="btn btn-lg btn-danger float-right">Actualizar</button>
+                   <input type="submit" name="" class="btn btn-lg btn-danger float-right" value="agregarPelicula">
+                    {{-- <button type="submit" class="btn btn-lg btn-danger float-right">Actualizar</button> --}}
                  </div>
-                  <a href="/user" class="btn btn-lg btn-warning float-left">Volver</a>
+                  <a href="/listadoPeliculas" class="btn btn-lg btn-warning float-left">Volver</a>
                </div>
              </form>
             </section>
-              </div>
-
-            </div>
-
+         </div>
+      </div>
    </div>
+</div>
 @endsection

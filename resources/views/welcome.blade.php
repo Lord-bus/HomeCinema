@@ -2,6 +2,9 @@
 
 @section('content')
   <br>
+  <div class="tamaño">
+
+
   <main role="main">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -47,4 +50,5 @@
       </a>
     </div>
   </main>
+  </div>
 @endsection
