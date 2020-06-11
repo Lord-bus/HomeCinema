@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Pelicula;
 use App\Genero;
@@ -10,7 +8,8 @@ class PeliculasController extends Controller
   //***************** Listado de Peliculas*******************
     public function index()
     {
-      $peliculas = Pelicula::all();
+      $peliculas=Pelicula::orderBy('id','desc')->paginate(12);
+      // $peliculas = Pelicula::all();
       return view('listadoPeliculas',compact('peliculas'));
     }
     //**************** Detalle Pelicula ******************************
@@ -27,6 +26,34 @@ class PeliculasController extends Controller
     //**************** Guardar Pelicula ******************************
     public function store(Request $request)
     {
+      // $request->validate([
+      //      'title'       =>  'required',
+      //      'rating'      =>  'required',
+      //      'awards'      =>  'required',
+      //      'release_date'=>  'required|min:1',
+      //      'length'      =>  'required',
+      //      'avatar'      =>  'required'
+      //  ]);
+      $reglas=[
+        'title'=>"string|min:3|unique:movies,title",
+        'rating'=>"numeric|min:0|max:9",
+        'awards'=>"integer|min:0",
+        'release_date'=>"date",
+        'length'=>"integer",
+        "avatar"=>"file"
+      ];
+      $mensaje=[
+        "string"=>"El campo :attribute debe ser un texto",
+        "min"=> " El campo debe tener un minimo de 3 caracteres",
+        "max"=> " debe tener un maximo de max:9",
+        "date"=> "El campo :attribute debe ser del tipo fecha",
+        "numeric"=> "El campo :attribute debe ser un número decimal con (.)",
+        "unique"=> "El campo :attribute está repetido",
+        "integer"=>"El campo :attribute debe ser un entero"
+      ];
+
+      $this->validate($request, $reglas, $mensaje);
+
       $peliculaNueva = new Pelicula();
 
       $ruta = $request->file("avatar")->store("public");
@@ -42,9 +69,18 @@ class PeliculasController extends Controller
 
       return redirect("/admin");
     }
-
+    //**************** Actualizar Pelicula ******************************
     public function update(Request $request, $id)
     {
+      $request->validate([
+           'title'       =>  'required',
+           'rating'      =>  'required',
+           'awards'      =>  'required',
+           'release_date'=>  'required|min:1',
+           'length'      =>  'required',
+           'avatar'      =>  'required'
+       ]);
+
         $peliculaNueva = Pelicula::findOrFail($id);
 
         if($request->hasFile('avatar'))
@@ -82,4 +118,10 @@ class PeliculasController extends Controller
       $peliculas=Pelicula::where('title','LIKE',"%{$form->input('title')}%")->paginate(3);
       return view('listadoPeliculas',compact('peliculas'));
     }
+    public function listadoAPI()
+    {
+      $peliculas=Pelicula::all();
+      return json_encode($peliculas);
+    }
+
 }

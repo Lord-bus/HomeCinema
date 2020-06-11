@@ -31,7 +31,8 @@ $(document).ready(function(){
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+{{-- style="background-color:#839192 --}}
+<body ">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" >
   <!--  <nav class="navbar navbar-expand-md navbar-light bg-white shadow-s"> -->

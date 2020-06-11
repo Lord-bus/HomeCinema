@@ -15,14 +15,9 @@
     </div>
   </div>
 </div>
-
-
-
 <!-- Container -->
 <div class="container">
-  <div class="row justify-content-md-center">
-  <h1>Ultimas !!</h1>
-  </div>
+  <br><br>
   <div class="row justify-content-md-center">
     @foreach ($peliculas as $pelicula)
       <div class="col-md-2 col-sm-6">
@@ -31,13 +26,18 @@
           <div class="card-body">
             <p class="card-text"><b>{{$pelicula->title}}</b></p>
             <div class="">
-              <a href="/detallePelicula/{{$pelicula->id}}" class="btn btn-info btn-left btn-sm" onclick="return confirm('seguro?');">Detalle</a><a href="/detallePeliculas/{{$pelicula->id}}" class="btn btn-success btn-right btn-sm">Trailer</a>
+              <a href="/detallePelicula/{{$pelicula->id}}" class="btn btn-info btn-left btn-sm" >Ver Detalle</a>
             </div>
           </div>
         </div>
       </div>
     @endforeach
   </div>
+
   <br>
 </div>
+<div class="pagination justify-content-center">
+    {{ $peliculas->links() }}
+</div>
+
 @endsection

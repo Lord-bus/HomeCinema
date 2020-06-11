@@ -11,7 +11,7 @@
                   @method('GET')
                  <div class="row">
                     <div class="col-md-6">
-                      <div class="card">
+                      <div class="card shadow" style="border:1px;">
                         <div class="card-body mb-2">
                           <h1 class="card-text text-center"><b>{{$pelicula->title}}</b></1>
                         </div>
@@ -21,16 +21,13 @@
                       </div>
                     </div>
                     <div class="col-md-6">
-                       <div class="card shadow" style="border:0px;">
-                          <div class="card-header bg-white border-0" >
-                             <div class="row align-items-center">
-                                <div class="col-8">
-                                   <h3 class="mb-0 ">Detalle de Pelicula</h3>
-                                </div>
+                       <div class="card shadow" style="border:1px;">
+                          <div class="card-header bg-black border-0" >
+                             <div class="text-center">
+                                   <h4 class="mb-2 "><b>DETALLES</b></h4>
                              </div>
                           </div>
                           <div class="card-body" >
-                             <h6 class="heading-small text-muted mb-4">Detalle de la Pelicula</h6>
                              <div class="pl-lg-4">
                                 <div class="row">
                                    <div class="col-lg-6">
@@ -82,20 +79,22 @@
 
                                    </div>
                                 </div><br>
+
                               </div>
                              </div>
                        </div>
-                       <hr class="my-4">
                     </div>
-                 </div>
-                 <div>
-                   <div class="form-group">
-                      <button type="submit" class="btn btn-lg btn-danger float-right">Actualizar</button>
-                   </div>
-                    <a href="/listadoPeliculas" class="btn btn-lg btn-warning float-left">Volver</a>
                  </div>
                </form>
               </section>
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                </div>
+                <div class="card-body d-flex justify-content-between align-items-center col-md-6">
+                   <a href="/listadoPeliculas" class="btn btn-lg btn-warning float-right">Volver</a>
+                </div>
+              </div>
+
            </div>
         </div>
      </div>
