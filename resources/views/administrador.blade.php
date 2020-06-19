@@ -35,7 +35,7 @@
                  <td>
                  <a href="/detallePelicula/{{$pelicula->id}}"  class="btn btn-warning" value="Edit">Ver</a>
                  <a href="/editarPelicula/{{ $pelicula->id }}" class="btn btn-info" value="Edit">Editar</a>
-                  <a href="/borrarPelicula/{{ $pelicula->id }}" class="btn btn-danger delete-user" value="Delete">Borrar</a></td>
+                  <a href="/borrarPelicula/{{ $pelicula->id }}" class="btn btn-danger delete-user" value="Delete" onclick="return confirm('Estas Seguro de Borrar la Pelicula?');">Borrar</a></td>
               </tr>
               @endforeach
            </tbody>

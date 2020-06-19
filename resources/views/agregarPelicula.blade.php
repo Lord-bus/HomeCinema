@@ -20,27 +20,38 @@
                       {{csrf_field()}}
                      <div class="form-group">
                       <label for="#">Titulo</label>
-                      <input type="text" name="title" class="form-control" id="#" placeholder="Texto" value="{{old('title')}}">
+                      <input type="text" name="title" class="form-control" id="#" placeholder="Texto" value="{{old('title')}}" required>
                       </div>
                       <div class="form-group">
                       <label for="#">Raiting</label>
-                      <input type="float" name="rating" class="form-control" id="#" placeholder="Decimal con punto" value="{{old('rating')}}">
+                      <input type="float" name="rating" class="form-control" id="#" placeholder="Decimal con punto" value="{{old('rating')}}" required>
                       </div>
                       <div class="form-group">
                        <label for="#">Premios</label>
-                       <input type="text" name="awards" class="form-control" id="#" placeholder="Número Entero" value="{{old('awards')}}">
+                       <input type="text" name="awards" class="form-control" id="#" placeholder="Número Entero" value="{{old('awards')}}" required>
                        </div>
                        <div class="form-group">
                        <label for="#">Fecha de Estreno</label>
-                       <input type="date" name="release_date" class="form-control" id="#" placeholder="" value="{{old('release_date')}}">
+                       <input type="date" name="release_date" class="form-control" id="#" placeholder="" value="{{old('release_date')}}" required>
                        </div>
                        <div class="form-group">
                        <label for="#">Duración</label>
-                       <input type="int" name="length" class="form-control" id="#" placeholder="Número Entero - Cantidad de Minutos" value="{{old('length')}}">
+                       <input type="int" name="length" class="form-control" id="#" placeholder="Número Entero - Cantidad de Minutos" value="{{old('length')}}" required>
+                       </div>
+                       <div class="form-group">
+                          <label for="#">Genero</label>
+                          <select class="custom-select" name="genre_id" required>
+                            <option value="">Elige el Genero</option>
+                            @foreach ($generos as $genero)
+                              <option value="{{ $genero->id }}"
+                                {{ (isset($peliculas) && ($peliculas->genre_id == $genero->id))?'seleted':'' }}
+                              >{{ $genero->name }}</option>
+                            @endforeach
+                          </select>
                        </div>
                        <div class="form-group">
                        <label for="#">Poster</label>
-                       <input type="file" name="avatar" class="form-control" id="#" placeholder="" value="{{old('avatar')}}">
+                       <input type="file" name="avatar" class="form-control" id="#" placeholder="" value="{{old('avatar')}}" >
                        </div>
                        <div class="">
                          <input type="submit" name="" value="AgregarPelicula">

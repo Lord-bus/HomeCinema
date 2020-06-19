@@ -32,32 +32,32 @@
                            </div>
                         </div>
                         <div class="card-body" >
-                           <h6 class="heading-small text-muted mb-4">Datos personales</h6>
+                           
                            <div class="pl-lg-4">
                               <div class="row">
                                  <div class="col-lg-6">
                                     <strong>Titulo: </strong><br>
-                                    <input type="text" name="title"  id="title" value="{{ $peliculas->title }}">
+                                    <input type="text" name="title"  id="title" value="{{ $peliculas->title }}" required>
                                  </div>
                                  <div class="col-lg-6">
                                     <strong>Raiting: </strong><br>
-                                    <input type="text" name="rating" id="rating" value="{{ $peliculas->rating }}">
+                                    <input type="text" name="rating" id="rating" value="{{ $peliculas->rating }}" required>
                                  </div>
                               </div><br>
                               <div class="row">
                                  <div class="col-lg-6">
                                     <strong>Premios: </strong><br>
-                                    <input type="text" name="awards" id="awards" value="{{ $peliculas->awards }}">
+                                    <input type="text" name="awards" id="awards" value="{{ $peliculas->awards }}" required>
                                  </div>
                                  <div class="col-lg-6">
                                     <strong>Fecha de Estreno: </strong><br>
-                                    <input type="text" name="release_date" id="release_date" value="{{ $peliculas->release_date }}">
+                                    <input type="text" name="release_date" id="release_date" value="{{ $peliculas->release_date }}" required>
                                  </div>
                               </div><br>
                               <div class="row">
                                  <div class="col-md-6">
                                     <strong>Duración: </strong><br>
-                                    <input type="text" name="length" id="length" value="{{ $peliculas->length }}">
+                                    <input type="text" name="length" id="length" value="{{ $peliculas->length }}" required>
                                  </div>
                                  <div class="col-md-6">
                                     <strong>Genero: </strong>
@@ -79,10 +79,10 @@
                </div>
                <div>
                  <div class="form-group">
-                   <input type="submit" name="" class="btn btn-lg btn-danger float-right" value="agregarPelicula">
+                   <input type="submit" name="" class="btn btn-lg btn-danger float-right" value="Guardar Cambios">
                     {{-- <button type="submit" class="btn btn-lg btn-danger float-right">Actualizar</button> --}}
                  </div>
-                  <a href="/listadoPeliculas" class="btn btn-lg btn-warning float-left">Volver</a>
+                  <a href="/admin" class="btn btn-lg btn-warning float-left">Administrador</a>
                </div>
              </form>
             </section>

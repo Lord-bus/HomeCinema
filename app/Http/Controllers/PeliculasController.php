@@ -21,7 +21,8 @@ class PeliculasController extends Controller
     //**************** Agregar Pelicula ******************************
     public function create()
     {
-      return view('agregarPelicula');
+      $generos=Genero::all();
+      return view("agregarPelicula",compact('generos'));
     }
     //**************** Guardar Pelicula ******************************
     public function store(Request $request)
@@ -64,6 +65,7 @@ class PeliculasController extends Controller
       $peliculaNueva->awards = $request["awards"];
       $peliculaNueva->release_date = $request["release_date"];
       $peliculaNueva->length = $request ["length"];
+      $peliculaNueva->genre_id = $request ["genre_id"];
       $peliculaNueva->avatar = $nomArchivo;
       $peliculaNueva->save();
 
@@ -72,14 +74,6 @@ class PeliculasController extends Controller
     //**************** Actualizar Pelicula ******************************
     public function update(Request $request, $id)
     {
-      $request->validate([
-           'title'       =>  'required',
-           'rating'      =>  'required',
-           'awards'      =>  'required',
-           'release_date'=>  'required|min:1',
-           'length'      =>  'required',
-           'avatar'      =>  'required'
-       ]);
 
         $peliculaNueva = Pelicula::findOrFail($id);
 
@@ -94,9 +88,9 @@ class PeliculasController extends Controller
         $peliculaNueva->awards = $request["awards"];
         $peliculaNueva->release_date = $request["release_date"];
         $peliculaNueva->length = $request ["length"];
-        // $peliculaNueva->genre_id = $request ["genre"];
+        $peliculaNueva->genre_id = $request ["genre_id"];
         $peliculaNueva->save();
-        return redirect("/listadoPeliculas");
+        return redirect("/admin");
     }
     //**************** Editar Pelicula ******************************
     public function edit($id)

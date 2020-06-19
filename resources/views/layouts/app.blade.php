@@ -32,7 +32,7 @@ $(document).ready(function(){
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 {{-- style="background-color:#839192 --}}
-<body ">
+<body style="background-color:#839192" >
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" >
   <!--  <nav class="navbar navbar-expand-md navbar-light bg-white shadow-s"> -->

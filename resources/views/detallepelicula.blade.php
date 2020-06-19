@@ -91,7 +91,11 @@
                 <div class="col-md-6 col-sm-12">
                 </div>
                 <div class="card-body d-flex justify-content-between align-items-center col-md-6">
-                   <a href="/listadoPeliculas" class="btn btn-lg btn-warning float-right">Volver</a>
+                  @if(Auth::user()->role == "1")
+                   <a href="/admin" class="btn btn-lg btn-warning float-right">Administrador</a>
+                 @else
+                     <a href="/listadoPeliculas" class="btn btn-lg btn-warning float-right">volver</a>
+                  @endif
                 </div>
               </div>
 
